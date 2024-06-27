@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/backend
+  
+  bot:
+    container_name: bot
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./bot:/bot
+    depends_on:
+      - backend
+      
