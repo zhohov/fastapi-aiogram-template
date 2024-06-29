@@ -1,6 +1,16 @@
 version: "3.8"
 
 services:
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/backend
+  
   bot:
     container_name: bot
     build:
@@ -11,7 +21,10 @@ services:
     ports:
       - "8443:8443"
     volumes:
-      - ./bot:/bot 
+      - ./bot:/bot
+    depends_on:
+      - backend
+      - redis
 
   redis:
     container_name: redis
@@ -22,8 +35,6 @@ services:
       - redis-data:/var/lib/redis-data
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
-      - REDIS_USER=${REDIS_USER}
-      - REDIS_USER_PASSWORD=${REDIS_USER_PASSWORD}
     restart: unless-stopped
 
 volumes:
