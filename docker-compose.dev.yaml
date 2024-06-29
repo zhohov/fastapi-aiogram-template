@@ -12,6 +12,8 @@ services:
       - ./backend:/backend
     env_file:
       - .env
+    depends_on:
+      - db
   
   bot:
     container_name: bot
@@ -39,6 +41,19 @@ services:
       - redis-data:/var/lib/redis-data
     restart: unless-stopped
 
+  db:
+    container_name: db
+    image: postgres:16.2
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+    ports:
+      - "5433:5433"
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+
 volumes:
   redis-data:
-      
+  pgdata:    
