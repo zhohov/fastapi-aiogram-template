@@ -1,10 +1,9 @@
-import os
 import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
 from config import settings
-from infrastructure.application import create_bot, create_dp
+from infrastructure.application import create_bot, create_dp, redis_storage
 
 
 async def main() -> None:
@@ -15,13 +14,15 @@ async def main() -> None:
         parse_mode=settings.parse_mode
     )
 
-    dp: Dispatcher = create_dp()
+    dp: Dispatcher = create_dp(
+        storage=redis_storage,
+    )
 
     try:
         await bot.delete_webhook(drop_pending_updates=True)
         await dp.start_polling(bot)
     except Exception as e:
-        raise
+        raise   
 
 
 if __name__ == "__main__":
