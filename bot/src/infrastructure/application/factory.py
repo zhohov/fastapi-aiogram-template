@@ -11,6 +11,7 @@ def create_dp(
     *_: tuple[Any],
     storage: Optional[BaseStorage] = None,
     middlewares: list[BaseMiddleware] = None,
+    handlers: list = None,
     **kwargs: dict[str, Any],
 ) -> Dispatcher:
     
@@ -18,6 +19,10 @@ def create_dp(
         storage = MemoryStorage()
     
     dp = Dispatcher(storage=storage)
+
+    if handlers:
+        for handler in handlers:
+            handler(dp)
 
     if middlewares:
         for middleware in middlewares:

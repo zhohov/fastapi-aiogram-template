@@ -10,7 +10,8 @@ class RedisSettings(BaseSettings):
 
 class Settings(BaseSettings):
     token: str = Field(..., env="TOKEN")
-    parse_mode: str = Field(env="parse_mode")
+    parse_mode: str = Field(env="PARSE_MODE")
+    backend_url: str = Field(..., env="BACKEND_URL")
 
     redis: RedisSettings = RedisSettings()
 

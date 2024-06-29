@@ -1,4 +1,4 @@
-from redis import Redis # type: ignore
+from redis.asyncio.client import Redis # type: ignore
 
 from config import settings
 

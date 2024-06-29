@@ -2,8 +2,8 @@ from fastapi import APIRouter, status, Request
 from domain.message import Message
 
 message_router = APIRouter(
-    prefix="/message_router",
-    tags=["message_router"],
+    prefix="/messages",
+    tags=["messages"],
 )
 
 

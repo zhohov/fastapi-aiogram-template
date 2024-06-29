@@ -5,6 +5,8 @@ from aiogram import Bot, Dispatcher
 from config import settings
 from infrastructure.application import create_bot, create_dp, redis_storage
 
+from presentation.base import register_user_interaction_handlers
+
 
 async def main() -> None:
     logging.basicConfig(level=logging.INFO)
@@ -16,6 +18,9 @@ async def main() -> None:
 
     dp: Dispatcher = create_dp(
         storage=redis_storage,
+        handlers=[
+            register_user_interaction_handlers,
+        ]
     )
 
     try:
