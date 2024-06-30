@@ -1,6 +1,7 @@
-import requests
-from typing import Optional
 from dataclasses import dataclass
+from typing import Optional
+
+import requests
 
 from config import settings
 
@@ -19,6 +20,6 @@ class MessagesApiClient:
         response = requests.get(url=url)
 
         return MessageDTO(**response.json())
-    
+
 
 message_client = MessagesApiClient()

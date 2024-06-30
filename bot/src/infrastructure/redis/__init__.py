@@ -1,3 +1,3 @@
-__all__ = ("client", )
+__all__ = ("client",)
 
 from .client import client

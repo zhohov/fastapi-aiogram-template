@@ -3,8 +3,8 @@ __all__ = ("register_user_interaction_handlers",)
 from aiogram import F, Router
 from aiogram.filters import Command
 
-from .start import start_command
 from .message_api import get_message_from_api
+from .start import start_command
 
 
 def register_user_interaction_handlers(router: Router) -> None:

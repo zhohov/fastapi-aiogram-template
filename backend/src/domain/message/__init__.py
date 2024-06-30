@@ -1,3 +1,3 @@
-__all__ = ("Message", )
+__all__ = ("Message",)
 
 from .models import Message

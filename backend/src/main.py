@@ -5,7 +5,6 @@ from config import settings
 from infrastructure.application import create
 from presentation.api.v1 import message_router
 
-
 app: FastAPI = create(
     title=settings.app_name,
     debug=settings.debug,

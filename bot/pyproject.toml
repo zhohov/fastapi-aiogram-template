@@ -12,6 +12,9 @@ requests = "^2.32.3"
 pydantic = "^2.7.4"
 pydantic-settings = "^2.3.4"
 redis = "^5.0.7"
+flake8 = "^7.1.0"
+isort = "^5.13.2"
+black = "^24.4.2"
 
 
 [build-system]

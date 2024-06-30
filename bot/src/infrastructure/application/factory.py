@@ -1,10 +1,10 @@
 from typing import Any, Optional
 
-from aiogram import Dispatcher, Bot, BaseMiddleware
-from aiogram.types import BotCommand
-from aiogram.enums import ParseMode
+from aiogram import BaseMiddleware, Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import BaseStorage, MemoryStorage
+from aiogram.types import BotCommand
 
 
 def create_dp(
@@ -14,10 +14,10 @@ def create_dp(
     handlers: list = None,
     **kwargs: dict[str, Any],
 ) -> Dispatcher:
-    
+
     if storage is None:
         storage = MemoryStorage()
-    
+
     dp = Dispatcher(storage=storage)
 
     if handlers:
@@ -38,15 +38,13 @@ async def create_bot(
     parse_mode: str = ParseMode.MARKDOWN,
     **kwargs: dict[str, Any],
 ) -> Bot:
-    
+
     if not token:
         raise ValueError("Token must be provided")
-    
+
     bot = Bot(
         token=token,
-        default=DefaultBotProperties(
-            parse_mode=parse_mode
-        ),
+        default=DefaultBotProperties(parse_mode=parse_mode),
     )
 
     if bot_commands:
