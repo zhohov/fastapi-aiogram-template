@@ -15,7 +15,7 @@ class MessagesApiClient:
     BASE_URL = settings.backend_url
 
     def get_message(self) -> Optional[MessageDTO]:
-        url = self.BASE_URL + "message_router/"
+        url = self.BASE_URL + "messages/"
         response = requests.get(url=url)
 
         return MessageDTO(**response.json())
