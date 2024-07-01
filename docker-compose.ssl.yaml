@@ -67,7 +67,6 @@ services:
       - "443:443"
     depends_on:
       - backend
-    restart: unless-stopped
     command: ["/bin/bash", "/utils/create_dummy_certs.sh"]
 
   certbot:
