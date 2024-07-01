@@ -76,7 +76,7 @@ services:
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --force-renewal --email zhohovmaksim@gmail.com --agree-tos --no-eff-email -d www.zhohov.space
+    command: certonly --webroot --webroot-path=/var/www/certbot --force-renewal --email email@example.com --agree-tos --no-eff-email -d domain.com
     depends_on:
       - nginx
 
