@@ -1,14 +1,17 @@
 DC := docker-compose
 DEV_COMPOSE := docker-compose.dev.yaml
 PROD_COMPOSE := docker-compose.prod.yaml
+SSL_COMPOSE := docker-compose.ssl.yaml
 env ?= dev
 
 ifeq ($(env),dev)
     COMPOSE_FILE := $(DEV_COMPOSE)
 else ifeq ($(env),prod)
     COMPOSE_FILE := $(PROD_COMPOSE)
+else ifeq ($(env),ssl)
+    COMPOSE_FILE := $(PROD_COMPOSE)
 else
-    $(error Invalid value for env: $(env). Valid values are 'dev' or 'prod'.)
+    $(error Invalid value for env: $(env). Valid values are 'dev' or 'prod' or 'ssl'.)
 endif
 
 .DEFAULT_GOAL := help
@@ -24,7 +27,7 @@ help:
 	@echo "  help                   Display this help"
 	@echo ""
 	@echo "Usage:"
-	@echo "  make [COMMAND] env=<dev|prod>"
+	@echo "  make [COMMAND] env=<dev|prod|ssl>"
 	@echo ""
 
 .PHONY: build
