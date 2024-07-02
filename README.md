@@ -24,7 +24,7 @@
 2. Переименовать файл `.env` и заполнить его:
     ```bash
     mv .env.example .env
-	  vim .env
+    vim .env
     ```
 
 ## Запуск в режиме `dev` <a name="dev"></a>
