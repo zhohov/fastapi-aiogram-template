@@ -9,7 +9,7 @@ ifeq ($(env),dev)
 else ifeq ($(env),prod)
     COMPOSE_FILE := $(PROD_COMPOSE)
 else ifeq ($(env),ssl)
-    COMPOSE_FILE := $(PROD_COMPOSE)
+    COMPOSE_FILE := $(SSL_COMPOSE)
 else
     $(error Invalid value for env: $(env). Valid values are 'dev' or 'prod' or 'ssl'.)
 endif
